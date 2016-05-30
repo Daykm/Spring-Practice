@@ -1,21 +1,18 @@
 package com.daykm.webconfig;
 
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.DispatcherServlet;
 
-public class DispatcherConfig  extends AbstractAnnotationConfigDispatcherServletInitializer {
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { RootConfig.class};
-	}
+@Configuration
+public class DispatcherConfig {
 
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[]{ WebConfig.class };
-	}
-
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/" };
-	}
+    @Bean
+    public ServletRegistrationBean dispatcherServlet() {
+        ServletRegistrationBean bean = new ServletRegistrationBean(new DispatcherServlet(), "/");
+        bean.setAsyncSupported(true);
+        return bean;
+    }
 }

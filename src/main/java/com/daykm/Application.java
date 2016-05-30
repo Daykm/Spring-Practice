@@ -1,19 +1,27 @@
 package com.daykm;
 
-import com.daykm.beans.HeyGetThing;
-import com.daykm.beans.HeyItBean;
-import com.daykm.beansoutofscope.HeyGetMe;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.daykm.webconfig.DispatcherConfig;
+import com.daykm.webconfig.RootConfig;
+import com.daykm.webconfig.WebConfig;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
+
+@Configuration
 public class Application {
 
-	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(Application.class)
+                .profiles("dev")
+                .parent(RootConfig.class)
+                .child(WebConfig.class)
+                .run();
 
-		context.getBean(HeyItBean.class).doThing();
+    }
 
-		context.getBean(HeyGetThing.class).thing.doThing();
 
-		context.getBean(HeyGetMe.class).doThing();
-	}
 }
