@@ -1,4 +1,4 @@
-package com.daykm.webconfig;
+package com.daykm.config;
 
 
 import com.daykm.web.MainController;

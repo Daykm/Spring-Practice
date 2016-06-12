@@ -1,17 +1,41 @@
 package com.daykm.domain;
 
-public class NewUser {
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+public class SiteUser {
+
+	private Long id;
+
+	@NotNull
+	@Size(min=1)
     private String firstName;
+	@NotNull
+	@Size(min = 1)
     private String lastName;
     private String password;
+	@NotNull
+	@Size(min = 5)
     private String email;
 
 
-    public NewUser() {
+    public SiteUser() {
     }
 
-    public String getFirstName() {
+
+	public SiteUser(String firstName, String lastName, String password, String email) {
+		this(null, firstName, lastName, password, email);
+	}
+
+	public SiteUser(Long id, String firstName, String lastName, String password, String email) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+	}
+
+	public String getFirstName() {
         return firstName;
     }
 

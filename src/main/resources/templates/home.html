@@ -12,24 +12,31 @@
 </head>
 
 <body>
-	<h1>Waddup</h1>
-    <h2>${number}</h2>
+	<h1>Title</h1>
+
+	<a th:href="@{/num=2}"><h2>Number test : <span th:text="${number}">0</span></h2></a>
+
 
     <form method="POST" th:object="${newUser}">
 
+		<fieldset class="form-group">
+			<label th:class="${#fields.hasErrors('password')} ? 'has-error'" for="password">Email</label>
+			<input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Enter email" />
+		</fieldset>
         <fieldset class="form-group">
-            <label th:class="${#fields.hasErrors('firstName')} ? 'has-error'" for="password">Password</label>
-            <input type="password" id="firstName" th:field="*{firstName}" class="form-control" placeholder="Enter password" />
+            <label th:class="${#fields.hasErrors('firstName')} ? 'has-error'" for="password">First Name</label>
+            <input type="text" id="firstName" th:field="*{firstName}" class="form-control" placeholder="Enter first name" />
         </fieldset>
 
         <fieldset class="form-group">
-            <label th:class="${#fields.hasErrors('lastName')} ? 'has-error'" for="password">Password</label>
-            <input type="password" id="firstName" th:field="*{lastName}" class="form-control" placeholder="Enter password" />
+            <label th:class="${#fields.hasErrors('lastName')} ? 'has-error'" for="password">Last Name</label>
+            <input type="text" id="lastName" th:field="*{lastName}" class="form-control" placeholder="Enter last name" />
         </fieldset>
-        <fieldset class="form-group">
-            <label th:class="${#fields.hasErrors('password')} ? 'has-error'" for="password">Password</label>
-            <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Enter password" />
-        </fieldset>
+		<fieldset class="form-group">
+			<label th:class="${#fields.hasErrors('password')} ? 'has-error'" for="password">Password</label>
+			<input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Enter password" />
+		</fieldset>
+		<button type="submit">Submit</button>
     </form>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
 </body>

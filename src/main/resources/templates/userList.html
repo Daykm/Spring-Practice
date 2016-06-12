@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+
+	<title>Under development</title>
+	<meta name="description" content="Under development" />
+	<meta name="author" content="Daykm" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+<body>
+<h1>Title</h1>
+<div>
+	<ul>
+		<li th:each="item : ${list}" th:text="${item.firstName}"> First Name here</li>
+	</ul>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+</body>
+</html>
