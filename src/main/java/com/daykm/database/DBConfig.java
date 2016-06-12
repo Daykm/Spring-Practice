@@ -1,24 +1,23 @@
 package com.daykm.database;
 
+
+import com.microsoft.sqlserver.jdbc.SQLServerDriver;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
-import javax.activation.DataSource;
-import javax.xml.crypto.Data;
+import javax.sql.DataSource;
+
 
 @Configuration
 public class DBConfig {
 
-	@Bean(destroyMethod = "shutdown")
-	@Profile("dev")
-	public DataSource devData() {
-		return null;
-	}
-
-	@Bean
-	@Profile("prod")
-	public DataSource prodData() {
-		return null;
-	}
+    @Bean
+    public DataSource dataSource() {
+        return DataSourceBuilder.create()
+                .driverClassName("SQLServerDriver")
+                .username("master")
+                .url("localhost/SQLEXPRESS")
+                .build();
+    }
 }
