@@ -84,8 +84,6 @@ public class DBConfig {
 		}
 	}
 
-
-
 	private List<SiteUser> getTestUsers(int count) {
 		ArrayList<SiteUser> users = new ArrayList<>(count);
 		for(int i = 0; i < count; i++) {
